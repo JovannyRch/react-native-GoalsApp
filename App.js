@@ -31,6 +31,10 @@ function App() {
     }
   };
 
+  const cancelAddGoal = () => {
+    setIsAddMode(false);
+  };
+
   const deleteHandler = idItem => {
     console.log('Id Item recibido', idItem);
     let newGoals = goals.filter(g => g.id !== idItem);
@@ -48,7 +52,11 @@ function App() {
             title="Nueva meta"
           />
         </View>
-        <GoalInput visible={isAddMode} btnHandler={btnHandler} />
+        <GoalInput
+          onCancel={cancelAddGoal}
+          visible={isAddMode}
+          btnHandler={btnHandler}
+        />
         <View style={styles.centerView}>
           <TouchableOpacity
             style={styles.btnDanger}
